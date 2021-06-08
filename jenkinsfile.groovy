@@ -9,9 +9,8 @@ pipeline {
 
 			stage('TWO') {
 				steps {				
-				input {
-					echo "Do you want to proceed ?"
-				}
+				      input("Do you want to proceed ?")
+				
 			    }
 			}
 
@@ -34,4 +33,4 @@ pipeline {
 		}
 
 	}
-}
+
