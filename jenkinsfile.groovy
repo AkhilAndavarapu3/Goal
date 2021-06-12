@@ -1,18 +1,13 @@
 pipeline {
 	agent any 
-	environment{
+	environment {
 		NEW_METHOD = 'overriding'
 	}
-	parameters{
+	parameters {
         choice(name:'VERSION',choices:['1.2','1.3','1.4'],description:'For choosing choice')
 	}
 		stages {
 			stage('ONE') {
-				when{
-					expression{
-						BRANCH_NAME == 'main'
-					}
-				}
 				steps {
 					echo "Hi ALL, Let's start the jenkins pipeline"
 				}
@@ -26,7 +21,7 @@ pipeline {
 			}
 
 			stage('THREE') {
-				parallel{
+				parallel {
 					stage('Unit Test') {
 						steps {
 							echo "This is Unit Test"
@@ -41,18 +36,18 @@ pipeline {
 					
 				}
 			}
-			stage('FOUR'){
-				steps{
+			stage('FOUR') {
+				steps {
 					echo "new version is ${params.VERSION}"
 					echo "new method is ${NEW_METHOD}"
 				}
 			}
 		}
-		post{
-			success{
+		post {
+			success {
 				echo "Build was successfull"
 			}
-			failure{
+			failure {
 				echo "Build Failed"
 			}
 		}
