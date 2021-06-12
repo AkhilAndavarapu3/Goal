@@ -1,7 +1,7 @@
 pipeline {
 	agent any 
 	environment{
-		NEW_METHOD == 'overriding'
+		NEW_METHOD = 'overriding'
 	}
 	parameters{
         choice(name:'VERSION',choices:['1.2','1.3','1.4'],description:'For choosing choice')
